@@ -1,6 +1,6 @@
 //#region (prise en main avec Bruno)
 
-// /* chgmt du "var" en "const"
+// dans HTML : <button id="btn-test">Test</button>
 
 // /* création de bouton de test pour lancer editNav (=interrupteur) */
 // const btnTest = document.querySelector("#btn-test");
@@ -24,20 +24,22 @@ const modalCloseBtn = document.querySelector(".close")
 modalCloseBtn.addEventListener("click", function(e){
   modalbg.style.display = "none";
 })
-//OU
-// Fonction externe
-// modalCloseBtn.addEventListener("click", closeModal);
-// function closeModal(){
-//   modalbg.style.display = "none";
-// }
-// pour info, opérateur ternaire : 
-// function handleModal(open) {
-//   modalbg.style.display = open ? "block" : "none";
-// }
+/*
+OU
+Fonction externe
+modalCloseBtn.addEventListener("click", closeModal);
+function closeModal(){
+  modalbg.style.display = "none";
+}
+pour info, opérateur ternaire : 
+function handleModal(open) {
+  modalbg.style.display = open ? "block" : "none";
+}
 
-/* éviter d'écrire ainsi :
+éviter d'écrire ainsi :
 const btnCloseModal = document.getElementsByClassName("close") [0];
 car créer une collection, un tableau */
+
 //#endregion
 
 //#region VÉRIFICATION DES DONNÉES ENTRÉES PAR LES UTILISATEURS
@@ -48,28 +50,11 @@ theForm.addEventListener("submit", (e) => {
   e.preventDefault();
 })
 
-
 // 1st verif : le prénom doit contenir au moins 2 caractères lettrés
 const firstName = document.querySelector("#first");
-
 const firstNameMsgError = document.querySelector(".firstNameData span")
 
-// firstName.addEventListener('input', function(e){
-//   if (e.target.value.length < 2) {
-//     firstNameMsgError.style.display = "block";
-//     firstName.style.border = "2px solid lightcoral";
-
-//   } else {
-//     firstNameMsgError.style.display = "none" 
-//     firstName.style.border = "none";
-//     }
-
-
-  // firstName.closest("div").querySelector(".msgError").style.display = "block";
-  // } else {
-  //   firstName.closest("div").querySelector(".msgError").style.display = "none" 
-  //   }
-// 
+ //-- Vérification avec un Regexp
 function validateName(name) {
   return /^[a-zA-Z -]{2,}$/.test(String(name).trim());
 }
@@ -85,7 +70,24 @@ firstName.addEventListener('input', function(e){
     }
   })
 
+/*   //-- Vérification plus simple, juste avec le nbr de caractères
+firstName.addEventListener('input', function(e){
+  if (e.target.value.length < 2) {
+    firstNameMsgError.style.display = "block";
+    firstName.style.border = "2px solid lightcoral";
 
+  } else {
+    firstNameMsgError.style.display = "none" 
+    firstName.style.border = "none";
+    }
+
+   -- Vérification plus simple, sans devoir déclarer de constante
+firstName.addEventListener('input', function(e){
+if (e.target.value.length < 2) {
+firstName.closest("div").querySelector(".msgError").style.display = "block";
+} else {
+  firstName.closest("div").querySelector(".msgError").style.display = "none" 
+  } */
 
 // 2nd verif : le nom doit contenir au moins 2 caractères lettrés
 const lastName = document.querySelector("#last");
@@ -104,6 +106,20 @@ email.addEventListener('input', function(e){
 if (validateName == false)
   email.closest("div").querySelector(".msgError").style.display = "block";
 })  
+
+
+firstName.addEventListener('input', function(e){
+  if (! validateName(e.target.value)) {
+    firstNameMsgError.style.display = "block";
+    firstName.style.border = "2px solid lightcoral";
+
+  } else {
+    firstNameMsgError.style.display = "none" 
+    firstName.style.border = "none";
+    }
+  })
+
+
 
 
 // 4ft verif : la date doit :
