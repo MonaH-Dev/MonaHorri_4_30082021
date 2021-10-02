@@ -63,61 +63,54 @@ firstName.addEventListener('input', function(e){
   if (! validateName(e.target.value)) {
     firstNameMsgError.style.display = "block";
     firstName.style.border = "2px solid lightcoral";
-
   } else {
     firstNameMsgError.style.display = "none" 
     firstName.style.border = "none";
     }
   })
 
-/*   //-- Vérification plus simple, juste avec le nbr de caractères
+/*
+  -- Vérification plus simple, juste avec le nbr de caractères
 firstName.addEventListener('input', function(e){
   if (e.target.value.length < 2) {
     firstNameMsgError.style.display = "block";
     firstName.style.border = "2px solid lightcoral";
-
   } else {
     firstNameMsgError.style.display = "none" 
     firstName.style.border = "none";
     }
 
-   -- Vérification plus simple, sans devoir déclarer de constante
+  -- Vérification plus simple, sans devoir déclarer de constante
 firstName.addEventListener('input', function(e){
 if (e.target.value.length < 2) {
 firstName.closest("div").querySelector(".msgError").style.display = "block";
 } else {
   firstName.closest("div").querySelector(".msgError").style.display = "none" 
-  } */
+  }
+*/
 
 // 2nd verif : le nom doit contenir au moins 2 caractères lettrés
 const lastName = document.querySelector("#last");
 
 // 3rd verif : l'entrée doit correspondre à un email
 const email = document.querySelector("#email");
-
+// const emailIsValid = validateEmail();
 
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
-const emailIsValid = validateEmail();
 email.addEventListener('input', function(e){
-if (validateName == false)
+  if (e.target.value.length < 2) {
   email.closest("div").querySelector(".msgError").style.display = "block";
-})  
-
-
-firstName.addEventListener('input', function(e){
-  if (! validateName(e.target.value)) {
-    firstNameMsgError.style.display = "block";
-    firstName.style.border = "2px solid lightcoral";
-
+  email.style.border = "2px solid lightcoral";
   } else {
-    firstNameMsgError.style.display = "none" 
-    firstName.style.border = "none";
+    email.closest("div").querySelector(".msgError").style.display = "none";
+    email.style.border = "none";
     }
-  })
+})
+
 
 
 
