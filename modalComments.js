@@ -70,6 +70,14 @@ firstName.addEventListener('input', function(e){
   })
 
 /*
+  -- Vérification plus simple, sans devoir déclarer de constante
+firstName.addEventListener('input', function(e){
+if (e.target.value.length < 2) {
+firstName.closest("div").querySelector(".msgError").style.display = "block";
+} else {
+  firstName.closest("div").querySelector(".msgError").style.display = "none" 
+  }
+
   -- Vérification plus simple, juste avec le nbr de caractères
 firstName.addEventListener('input', function(e){
   if (e.target.value.length < 2) {
@@ -79,14 +87,6 @@ firstName.addEventListener('input', function(e){
     firstNameMsgError.style.display = "none" 
     firstName.style.border = "none";
     }
-
-  -- Vérification plus simple, sans devoir déclarer de constante
-firstName.addEventListener('input', function(e){
-if (e.target.value.length < 2) {
-firstName.closest("div").querySelector(".msgError").style.display = "block";
-} else {
-  firstName.closest("div").querySelector(".msgError").style.display = "none" 
-  }
 */
 
 // 2nd verif : le nom doit contenir au moins 2 caractères lettrés
