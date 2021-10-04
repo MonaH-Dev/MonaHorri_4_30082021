@@ -13,14 +13,13 @@
 
 /* LANDING PAGE */ /*#region*/
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 2rem;
 }
 
 p {
@@ -32,10 +31,10 @@ img {
   padding-right: 1rem;
 }
 
-.topnav {
+/* .topnav {
   overflow: hidden;
   margin: 3.5%;
-}
+} */
 .header-logo {
     float: left;
 }
@@ -50,7 +49,7 @@ img {
   padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-family: Roboto, sans-serif;
 }
 
@@ -70,15 +69,18 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
+    color: #ff0000;
     display: block;
+    font-size: xx-large;
+    padding: 0;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -99,7 +101,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -110,11 +111,15 @@ main {
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  /* margin: 1px 20px 15px; */
   border-radius: 2rem;
   text-align: justify;
+}
 
-
+@media screen and (max-width: 950px) {
+  main {
+    padding: 0;
+  }
 }
 
 .modal-btn {
@@ -416,13 +421,13 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 50px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* min-width: 424px; */
 }
 .hero-content::after {
   content: "";
@@ -443,7 +448,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 145%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -481,7 +486,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -489,7 +494,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -504,6 +509,7 @@ footer {
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    margin: 10px 0;
   }
   .hero-img img {
     border-radius: 10px;
