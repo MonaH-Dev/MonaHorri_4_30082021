@@ -535,7 +535,7 @@ footer {
 
 .msgError {
   display: none;
-  font-size: small;
+  font-size: x-small;
   color: lightcoral;
 }
 /*#endregion*/

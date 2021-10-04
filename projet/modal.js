@@ -55,8 +55,11 @@ const firstName = document.querySelector("#first");
 const firstNameMsgError = document.querySelector(".firstNameData span")
 
  //-- Vérification avec un Regexp
-function validateName(name) {
-  return /^[a-zA-Z -]{2,}$/.test(String(name).trim());
+function validateName(name) { 
+  return /^[a-zA-ZÀ-ú -]{2,45}$/.test(String(name).trim());
+    // entre a et z (min ou maj) ac/ss accent, de 2 à 45 caractères
+    // .test ???
+    // .trim permet de supp les espaces
 }
 
 firstName.addEventListener('input', function(e){
@@ -70,7 +73,6 @@ firstName.addEventListener('input', function(e){
   })
 
 /*
-
   -- Vérification plus simple, sans devoir déclarer de constante
 firstName.addEventListener('input', function(e){
 if (e.target.value.length < 2) {
@@ -88,16 +90,32 @@ firstName.addEventListener('input', function(e){
     firstNameMsgError.style.display = "none" 
     firstName.style.border = "none";
     }
-
-
 */
 
 // 2nd verif : le nom doit contenir au moins 2 caractères lettrés
 const lastName = document.querySelector("#last");
+lastName.addEventListener('input', function(e){
+  if (! validateName(e.target.value)) {
+  lastName.closest("div").querySelector(".msgError").style.display = "block";
+  lastName.style.border = "2px solid lightcoral";
+  } else {
+    lastName.closest("div").querySelector(".msgError").style.display = "none";
+    lastName.style.border = "none"; 
+    }
+})
+/*
+ -- vérif simple : le nom doit contenir au moins 2 caractères lettrés
+lastName.addEventListener('input', function(e){
+if (e.target.value.length < 2) {
+lastName.closest("div").querySelector(".msgError").style.display = "block";
+} else {
+  lastName.closest("div").querySelector(".msgError").style.display = "none" 
+  }
+})
+*/
 
 // 3rd verif : l'entrée doit correspondre à un email
 const email = document.querySelector("#email");
-// const emailIsValid = validateEmail();
 
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -105,7 +123,7 @@ function validateEmail(email) {
 }
 
 email.addEventListener('input', function(e){
-  if (e.target.value.length < 2) {
+  if (!validateEmail(email.value)) {
   email.closest("div").querySelector(".msgError").style.display = "block";
   email.style.border = "2px solid lightcoral";
   } else {
@@ -114,40 +132,76 @@ email.addEventListener('input', function(e){
     }
 })
 
-
-
-
-
-// 4ft verif : la date doit :
+// 4ft verif : la date doit entre 18 et 100ans :
 const bthDate = document.querySelector("#birthdate");
-// - précédée celle d'aujourd'hui
-// - âge : entre 18 et 100ans 
-// - si moins de 18ans, indiqué msg d'alerte
-console.log(bthDate.value)
+// console.log(bthDate.value)
 
 function testMajority(dateStr) {
-  const dateMinus18 = (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
+  var dateMinus18 = (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
   return new Date(dateStr) <= new Date(dateMinus18);
 }
 
 bthDate.addEventListener('input', function(e){
-if (testMajority(e.target.value)) {
-  console.log(e.target.value)
-}
-})  
+if ((! testMajority(e.target.value))
+|| Number.isNaN(testMajority(bthDate.value)))
+// || (testMajority(e.target.value > 100)))
+{
+bthDate.closest("div").querySelector(".msgError").style.display = "block";
+bthDate.style.border = "2px solid lightcoral";
+  } else {
+  bthDate.closest("div").querySelector(".msgError").style.display = "none";
+  bthDate.style.border = "none"; 
+    }
+})
+
 
 
 // 5ft verif : nbre de tournois entre 0 et 15
 const nbreVille = document.querySelector("#quantity");
+// pas besoin de check ???
 
 // 6ft verif : si chiffre <0 indiqué à la précédente question,
 // obligé à cocher au moins 1 case 
+const LocationMsgError = document.querySelector(".locationData span")
+
+// nbreVille.addEventListener('change', function(e){
+// if (! nbreVille.value == "0") { /* alert('Merci de sélectionner au moins une ville') */
+//   LocationMsgError.style.display = "block";
+// } else {
+//   LocationMsgError.style.display = "none"; 
+//   }
+// })
+
+const choixMultiple = document.querySelectorAll(".locationData input")
+
+// nbreVille.addEventListener('change', function(e){
+//   if (! nbreVille.value > 1) { 
+//     choixMultiple.setAttribute("type","checkbox");
+//   } else {
+//     choixMultiple.setAttribute("type","radio");
+//     }
+//   })
+
+// nbreVille.addEventListener('change', modifyInputType)
+
+// function modifyInputType(e) {
+//   choixMultiple.modifyInputType.checkbox;
+// }
 
 
 // 7th verif : les conditions d'utilisation doivent être cochées
-const formElt = document.querySelector("form");
+const cgu = document.querySelector("#checkbox1");
 
-console.log(formElt.elements.location.value);
+cgu.addEventListener('input', function(e){
+  if (!cgu.checked) {
+  cgu.closest("div").querySelector(".msgError").style.display = "block";
+  } else {
+    cgu.closest("div").querySelector(".msgError").style.display = "none";
+    }
+})
+
+// const formElt = document.querySelector("form");
+// console.log(formElt.elements.location.value);
 
 //#endregion
 
