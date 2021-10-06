@@ -15,6 +15,15 @@
 //   }
 // }) 
 
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 //#endregion
 
 //#region FERMER LA MODAL 
@@ -195,6 +204,7 @@ if (!atLeastOneChecked("location")) {
   LocationMsgError.style.display = "block";
 }
 
+// pour faire des tests :
 // const btnTest = document.querySelector("#btn-test");
 // btnTest.addEventListener('click', function() {
 //   atLeastOneChecked ("location")
