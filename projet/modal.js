@@ -2,9 +2,9 @@
 
 // dans HTML : <button id="btn-test">Test</button>
 
-// /* création de bouton de test pour lancer editNav (=interrupteur) */
+/* création de bouton de test pour lancer editNav (=interrupteur) */
 // const btnTest = document.querySelector("#btn-test");
-
+// bntTest.addEventListener('click', atLeastOneChecked)
 // /* ajout d'un écouteur d'évènement : */
 // btnTest.addEventListener("click", function () {
 //   const x = document.getElementById("myTopnav");
@@ -63,7 +63,7 @@ function validateName(name) {
 }
 
 firstName.addEventListener('input', function(e){
-  if (! validateName(e.target.value)) {
+  if (! validateName(e.target.value)) { //on pourrait remplacer e.target par fisrtName
     firstNameMsgError.style.display = "block";
     firstName.style.border = "2px solid lightcoral";
   } else {
@@ -140,11 +140,15 @@ function testMajority(dateStr) {
   var dateMinus18 = (new Date().getFullYear() - 18) + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
   return new Date(dateStr) <= new Date(dateMinus18);
 }
+function test100y(dateStr) {
+  var dateMinus100 = (new Date().getFullYear() - 100) + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
+  return new Date(dateStr) >= new Date(dateMinus100);
+}
 
 bthDate.addEventListener('input', function(e){
-if ((! testMajority(e.target.value))
-|| Number.isNaN(testMajority(bthDate.value)))
-// || (testMajority(e.target.value > 100)))
+if (! testMajority(e.target.value)
+// || Number.isNaN(bthDate.value)) 
+|| (! test100y(e.target.value)))
 {
 bthDate.closest("div").querySelector(".msgError").style.display = "block";
 bthDate.style.border = "2px solid lightcoral";
@@ -173,6 +177,28 @@ const LocationMsgError = document.querySelector(".locationData span")
 // })
 
 const choixMultiple = document.querySelectorAll(".locationData input")
+
+
+function atLeastOneChecked (radioName) {
+  const radioGroup = document.querySelectorAll(`input[name=${radioName}]`)
+  let atLeastOneIsChecked = false
+
+  radioGroup.forEach(function(radioElt) {
+    if (radioElt.checked) {
+      atLeastOneIsChecked = true
+    }
+  })
+  return atLeastOneIsChecked
+}
+
+if (!atLeastOneChecked("location")) {
+  LocationMsgError.style.display = "block";
+}
+
+// const btnTest = document.querySelector("#btn-test");
+// btnTest.addEventListener('click', function() {
+//   atLeastOneChecked ("location")
+// })
 
 // nbreVille.addEventListener('change', function(e){
 //   if (! nbreVille.value > 1) { 

@@ -26,6 +26,7 @@
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
+      <!-- <button id="btn-test">Test</button> -->
     </div>
     </div>
   </div>
@@ -119,8 +120,10 @@
                 name="quantity"
                 min="0"
                 max="99"
-                placeholder="0"
+                value="0"
                 >
+                <span class="msgError"> XX</span>
+
               </div>
               <p class="text-label">Quelles villes ?</p> <span class="msgError"> Veuillez sélectionner au moins une ville</span>
               <div
@@ -199,8 +202,9 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  checked 
                 />
+                <!-- checked -> coché par défaut -->
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
