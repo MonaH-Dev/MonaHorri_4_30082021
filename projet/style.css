@@ -213,6 +213,7 @@ main {
   color: #fff;
   padding-top: 10px;
   display: flex;
+  height: 75%;
 }
 
 .modal-body {

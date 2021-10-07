@@ -27,12 +27,12 @@ function editNav() {
 //#endregion
 
 //#region FERMER LA MODAL 
-const modalCloseBtn = document.querySelector(".close")
+// const modalCloseBtn = document.querySelector(".close")
 
-// Fonction interne
-modalCloseBtn.addEventListener("click", function(e){
-  modalbg.style.display = "none";
-})
+// // Fonction interne
+// modalCloseBtn.addEventListener("click", function(e){
+//   modalbg.style.display = "none";
+// })
 /*
 OU
 Fonction externe
@@ -172,6 +172,18 @@ bthDate.style.border = "2px solid lightcoral";
 // 5ft verif : nbre de tournois entre 0 et 15
 const nbreVille = document.querySelector("#quantity");
 // pas besoin de check ???
+nbreVille.addEventListener('input', function(e){
+  if (! (e.target.value) >= 0) {
+  nbreVille.closest("div").querySelector(".msgError").style.display = "block";
+  nbreVille.style.border = "2px solid lightcoral";
+  } else {
+    nbreVille.closest("div").querySelector(".msgError").style.display = "none";
+    nbreVille.style.border = "none"; 
+    }
+})
+
+
+
 
 // 6ft verif : si chiffre <0 indiqué à la précédente question,
 // obligé à cocher au moins 1 case 
@@ -241,6 +253,15 @@ cgu.addEventListener('input', function(e){
 
 //#endregion
 
+//#region FERMER LA MODAL (2) 
+const modalCloseBtn = document.querySelector(".close, #btn-close");
+
+modalCloseBtn.addEventListener("click", function(e){
+  modalbg.style.display = "none";
+})
+
+
+//#endregion
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"); /*-> récupérer le 1er élément par sa class ou autres*/
@@ -261,6 +282,14 @@ function launchModal() {
     document.body.style.overflow = "hidden";
 }
 
+// close modal form
+function launchModal() {
+  modalbg.style.display = "block";
+    // Scrolling to the top of the page :
+    window.scrollTo(0, 0);
+    // and disabling scrolling once modal is open :
+    document.body.style.overflow = "hidden";
+}
 
 
 
