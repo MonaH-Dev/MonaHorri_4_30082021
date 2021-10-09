@@ -204,29 +204,27 @@ theForm.addEventListener("submit", function(e) {
   // console.log(e.target.location.value) // on peut aussi écrire theForm.element.location.value
   
   
-  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK && cguOK)) {
+  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK)) {
     // ==> if (! (true)) ==> if false
-
-    console.log("un des champs n'est pas valide");
+    console.log("missing")
     return
   }
-
+console.log("toto");
   const cities = document.querySelector(".cities .msgError");
   if (e.target.location.value == "") {
     cities.style.display = "block";
   } else {
     cities.style.display = "none";
     }
-
-  // formValidated();
-
+  
+  formValidated();
 })
 
+const rmctEcran = document.querySelector(".remerciement")
 
-// function formValidated () {
-//   document.querySelector(".remerciement").style.display = block
-// }
-
+function formValidated () {
+  rmctEcran.style.display = "block";
+}
 
 // nbreVille.addEventListener('change', function(e){
 // if (! nbreVille.value == "0") { /* alert('Merci de sélectionner au moins une ville') */
@@ -289,19 +287,29 @@ cgu.addEventListener('input', function(e){
     }
 })
 
+// cgu.addEventListener('input', function(e){
+//   if (cgu.checked) {
+//   cgu.closest("div").querySelector(".msgError").style.display = "none";
+//   cguOK = true;
+//   } else {
+//     cgu.closest("div").querySelector(".msgError").style.display = "block";
+//     }
+// })
+
 // const formElt = document.querySelector("form");
 // console.log(formElt.elements.location.value);
 
 //#endregion
 
 //#region FERMER LA MODAL (2) 
-const modalCloseBtn = document.querySelector(".close, #btn-close");
+const modalCloseBtn = document.querySelectorAll(".close, #btn-close");
 
-modalCloseBtn.addEventListener("click", function(e){
+function closeModal(){
   modalbg.style.display = "none";
-})
+  rmctEcran.style.display = "none";
+}
 
-
+modalCloseBtn.forEach((elt) => elt.addEventListener("click", closeModal));
 //#endregion
 
 // DOM Elements
@@ -323,15 +331,4 @@ function launchModal() {
     // and disabling scrolling once modal is open :
     document.body.style.overflow = "hidden";
 }
-
-// // close modal form
-// function launchModal() {
-//   modalbg.style.display = "block";
-//     // Scrolling to the top of the page :
-//     window.scrollTo(0, 0);
-//     // and disabling scrolling once modal is open :
-//     document.body.style.overflow = "hidden";
-// }
-
-
 
