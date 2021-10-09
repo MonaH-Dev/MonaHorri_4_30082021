@@ -52,6 +52,7 @@ car créer une collection, un tableau */
 //#endregion
 
 //#region VÉRIFICATION DES DONNÉES ENTRÉES PAR LES UTILISATEURS
+console.log(document.querySelector(".locationData span").style.display)
 
 const theForm = document.querySelector("#theForm")
 // Pour éviter que la page se recharge lors du clic "submit" : 
@@ -169,11 +170,15 @@ bthDate.style.border = "2px solid lightcoral";
 
 
 
-// 5ft verif : nbre de tournois entre 0 et 15
+// 5ft verif : vérifier qu'un nbre soit indiqué
 const nbreVille = document.querySelector("#quantity");
-// pas besoin de check ???
+
+function valueIsNumber(value){
+  return /^(0|[1-9][0-9]*)$/.test(value);
+}
+
 nbreVille.addEventListener('input', function(e){
-  if (! (e.target.value) >= 0) {
+  if (! valueIsNumber(e.target.value)) {
   nbreVille.closest("div").querySelector(".msgError").style.display = "block";
   nbreVille.style.border = "2px solid lightcoral";
   } else {
@@ -187,7 +192,6 @@ nbreVille.addEventListener('input', function(e){
 
 // 6ft verif : si chiffre <0 indiqué à la précédente question,
 // obligé à cocher au moins 1 case 
-const LocationMsgError = document.querySelector(".locationData span")
 
 // nbreVille.addEventListener('change', function(e){
 // if (! nbreVille.value == "0") { /* alert('Merci de sélectionner au moins une ville') */
@@ -212,9 +216,6 @@ function atLeastOneChecked (radioName) {
   return atLeastOneIsChecked
 }
 
-if (!atLeastOneChecked("location")) {
-  LocationMsgError.style.display = "block";
-}
 
 // pour faire des tests :
 // const btnTest = document.querySelector("#btn-test");
@@ -275,6 +276,7 @@ modalBtn[1].addEventListener("click", launchModal)
 
 // launch modal form
 function launchModal() {
+  console.log(document.querySelector(".locationData span").style.display)
   modalbg.style.display = "block";
     // Scrolling to the top of the page :
     window.scrollTo(0, 0);
@@ -282,14 +284,14 @@ function launchModal() {
     document.body.style.overflow = "hidden";
 }
 
-// close modal form
-function launchModal() {
-  modalbg.style.display = "block";
-    // Scrolling to the top of the page :
-    window.scrollTo(0, 0);
-    // and disabling scrolling once modal is open :
-    document.body.style.overflow = "hidden";
-}
+// // close modal form
+// function launchModal() {
+//   modalbg.style.display = "block";
+//     // Scrolling to the top of the page :
+//     window.scrollTo(0, 0);
+//     // and disabling scrolling once modal is open :
+//     document.body.style.overflow = "hidden";
+// }
 
 
 
