@@ -187,11 +187,20 @@ nbreVille.addEventListener('input', function(e){
     }
 })
 
-
-
-
 // 6ft verif : si chiffre <0 indiqué à la précédente question,
 // obligé à cocher au moins 1 case 
+theForm.addEventListener("submit", function(e) {
+  // console.log(e.target.location.value) // on peut aussi écrire theForm.element.location.value
+  const cities = document.querySelector(".cities .msgError");
+  if (e.target.location.value == "") {
+    cities.style.display = "block";
+  } else {
+    cities.style.display = "none";
+    }
+})
+
+
+
 
 // nbreVille.addEventListener('change', function(e){
 // if (! nbreVille.value == "0") { /* alert('Merci de sélectionner au moins une ville') */
@@ -201,20 +210,23 @@ nbreVille.addEventListener('input', function(e){
 //   }
 // })
 
-const choixMultiple = document.querySelectorAll(".locationData input")
+
+// fait avec Brtuno ----------------------
+// const choixMultiple = document.querySelectorAll(".locationData input")
 
 
-function atLeastOneChecked (radioName) {
-  const radioGroup = document.querySelectorAll(`input[name=${radioName}]`)
-  let atLeastOneIsChecked = false
+// function atLeastOneChecked (radioName) {
+//   const radioGroup = document.querySelectorAll(`input[name=${radioName}]`)
+//   let atLeastOneIsChecked = false
 
-  radioGroup.forEach(function(radioElt) {
-    if (radioElt.checked) {
-      atLeastOneIsChecked = true
-    }
-  })
-  return atLeastOneIsChecked
-}
+//   radioGroup.forEach(function(radioElt) {
+//     if (radioElt.checked) {
+//       atLeastOneIsChecked = true
+//     }
+//   })
+//   return atLeastOneIsChecked
+// }
+// fait avec Brtuno ----------------------
 
 
 // pour faire des tests :
