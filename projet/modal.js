@@ -63,6 +63,7 @@ theForm.addEventListener("submit", (e) => {
 // 1st verif : le prénom doit contenir au moins 2 caractères lettrés
 const firstName = document.querySelector("#first");
 const firstNameMsgError = document.querySelector(".firstNameData span")
+let fistNameOK = false;
 
  //-- Vérification avec un Regexp
 function validateName(name) { 
@@ -79,6 +80,7 @@ firstName.addEventListener('input', function(e){
   } else {
     firstNameMsgError.style.display = "none" 
     firstName.style.border = "none";
+    fistNameOK = true;
     }
   })
 
@@ -104,6 +106,8 @@ firstName.addEventListener('input', function(e){
 
 // 2nd verif : le nom doit contenir au moins 2 caractères lettrés
 const lastName = document.querySelector("#last");
+let lastNameOK = false;
+
 lastName.addEventListener('input', function(e){
   if (! validateName(e.target.value)) {
   lastName.closest("div").querySelector(".msgError").style.display = "block";
@@ -111,7 +115,8 @@ lastName.addEventListener('input', function(e){
   } else {
     lastName.closest("div").querySelector(".msgError").style.display = "none";
     lastName.style.border = "none"; 
-    }
+    lastNameOK = true;
+  }
 })
 /*
  -- vérif simple : le nom doit contenir au moins 2 caractères lettrés
@@ -126,6 +131,7 @@ lastName.closest("div").querySelector(".msgError").style.display = "block";
 
 // 3rd verif : l'entrée doit correspondre à un email
 const email = document.querySelector("#email");
+let emailOK = false;
 
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -139,11 +145,13 @@ email.addEventListener('input', function(e){
   } else {
     email.closest("div").querySelector(".msgError").style.display = "none";
     email.style.border = "none";
+    emailOK = true;
     }
 })
 
 // 4ft verif : la date doit entre 18 et 100ans :
 const bthDate = document.querySelector("#birthdate");
+let bthDateOK = false;
 // console.log(bthDate.value)
 
 function testMajority(dateStr) {
@@ -165,6 +173,7 @@ bthDate.style.border = "2px solid lightcoral";
   } else {
   bthDate.closest("div").querySelector(".msgError").style.display = "none";
   bthDate.style.border = "none"; 
+  bthDateOK = true;
     }
 })
 
@@ -172,6 +181,7 @@ bthDate.style.border = "2px solid lightcoral";
 
 // 5ft verif : vérifier qu'un nbre soit indiqué
 const nbreVille = document.querySelector("#quantity");
+let nbreVilleOK = false;
 
 function valueIsNumber(value){
   return /^(0|[1-9][0-9]*)$/.test(value);
@@ -184,6 +194,7 @@ nbreVille.addEventListener('input', function(e){
   } else {
     nbreVille.closest("div").querySelector(".msgError").style.display = "none";
     nbreVille.style.border = "none"; 
+    nbreVilleOK = true;
     }
 })
 
@@ -191,15 +202,30 @@ nbreVille.addEventListener('input', function(e){
 // obligé à cocher au moins 1 case 
 theForm.addEventListener("submit", function(e) {
   // console.log(e.target.location.value) // on peut aussi écrire theForm.element.location.value
+  
+  
+  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK && cguOK)) {
+    // ==> if (! (true)) ==> if false
+
+    console.log("un des champs n'est pas valide");
+    return
+  }
+
   const cities = document.querySelector(".cities .msgError");
   if (e.target.location.value == "") {
     cities.style.display = "block";
   } else {
     cities.style.display = "none";
     }
+
+  // formValidated();
+
 })
 
 
+// function formValidated () {
+//   document.querySelector(".remerciement").style.display = block
+// }
 
 
 // nbreVille.addEventListener('change', function(e){
@@ -252,12 +278,14 @@ theForm.addEventListener("submit", function(e) {
 
 // 7th verif : les conditions d'utilisation doivent être cochées
 const cgu = document.querySelector("#checkbox1");
+let cguOK = false;
 
 cgu.addEventListener('input', function(e){
   if (!cgu.checked) {
   cgu.closest("div").querySelector(".msgError").style.display = "block";
   } else {
     cgu.closest("div").querySelector(".msgError").style.display = "none";
+    cguOK = true;
     }
 })
 
