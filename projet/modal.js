@@ -52,7 +52,6 @@ car créer une collection, un tableau */
 //#endregion
 
 //#region VÉRIFICATION DES DONNÉES ENTRÉES PAR LES UTILISATEURS
-console.log(document.querySelector(".locationData span").style.display)
 
 const theForm = document.querySelector("#theForm")
 // Pour éviter que la page se recharge lors du clic "submit" : 
@@ -204,9 +203,10 @@ theForm.addEventListener("submit", function(e) {
   // console.log(e.target.location.value) // on peut aussi écrire theForm.element.location.value
   
   
-  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK)) {
+  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK && cguOK)) {
     // ==> if (! (true)) ==> if false
     console.log("missing")
+    // rajouter if nbre ville 
     return
   }
 console.log("toto");
@@ -324,7 +324,6 @@ modalBtn[1].addEventListener("click", launchModal)
 
 // launch modal form
 function launchModal() {
-  console.log(document.querySelector(".locationData span").style.display)
   modalbg.style.display = "block";
     // Scrolling to the top of the page :
     window.scrollTo(0, 0);
