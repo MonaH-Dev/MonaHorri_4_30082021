@@ -209,7 +209,7 @@ theForm.addEventListener("submit", function(e) {
     // rajouter if nbre ville 
     return
   }
-console.log("toto");
+// console.log("toto");
   const cities = document.querySelector(".cities .msgError");
   if (e.target.location.value == "") {
     cities.style.display = "block";

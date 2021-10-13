@@ -204,8 +204,6 @@ main {
   margin: auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   /* overflow: hidden; */
@@ -214,6 +212,13 @@ main {
   padding-top: 10px;
   display: flex;
   height: 90%;
+  /* animation-name: modalopen;
+  animation-duration: var(--modal-duration); */
+}
+
+div[class="content"]:not(.rmct) {
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-body {
@@ -625,6 +630,7 @@ footer {
   .main-navbar {
     align-self: flex-end;
   }
+}
 
 @keyframes modalopen {
   from {
@@ -635,8 +641,6 @@ footer {
     opacity: 1;
   }
 }
-}
-
 
 
 .msgError {
