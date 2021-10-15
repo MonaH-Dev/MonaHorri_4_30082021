@@ -193,20 +193,29 @@ cgu.addEventListener('input', function(e){
 theForm.addEventListener("submit", function(e) {
   // console.log(e.target.location.value)
   // on peut aussi écrire theForm.element.location.value
-  
-  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK && cguOK)) {
-    // ==> if (! (true)) ==> if false
-    console.log("missing")
-    // rajouter if nbre ville 
-    return
-  }
-// console.log("toto");
+
+  let citiesOK = false;
+
   const cities = document.querySelector(".cities .msgError");
   if (e.target.location.value == "") {
     cities.style.display = "block";
   } else {
-    cities.style.display = "none";
+    cities.style.display = "none"
+    citiesOK = true;
     }
+  
+  if (! (fistNameOK && lastNameOK && emailOK && bthDateOK && nbreVilleOK && citiesOK && cguOK)) {
+    // ==> if (! (true)) ==> if false
+    console.log("missing")
+    // rajouter if nbre ville
+    
+    if (!cguOK) {
+      cgu.closest("div").querySelector(".msgError").style.display = "block";
+    }
+    return
+  }
+// console.log("toto");
+
   
   formValidated();
 })
