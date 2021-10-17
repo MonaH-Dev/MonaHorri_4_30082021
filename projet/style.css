@@ -21,7 +21,7 @@ body {
   max-width: 1300px;
   /* margin: 2rem auto; */
   margin: 2vh 2rem 0 2rem;
-  }
+}
 
 @media screen and (min-width: 1350px) {
   body {
@@ -86,7 +86,9 @@ img {
 }
 
 @media screen and (max-width: 950px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     color: #ff0000;
@@ -102,7 +104,9 @@ img {
 }
 
 @media screen and (max-width: 950px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -119,15 +123,15 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
   }
-} 
+}
 
 main {
   /* font-size: 130%; */
@@ -188,7 +192,8 @@ main {
   font-size: 16px;
 }
 
-.bground, .remerciement {
+.bground,
+.remerciement {
   display: none;
   position: fixed;
   z-index: 1;
@@ -226,7 +231,7 @@ div[class="content"]:not(.rmct) {
   height: 100%;
 }
 
-.remerciement p{
+.remerciement p {
   text-align: center;
   font-size: 5.5vh;
   font-weight: normal;
@@ -258,7 +263,7 @@ input {
   margin-top: 1vh;
 }
 
-.formData p{
+.formData p {
   font-size: 0.7rem;
   font-weight: normal;
   color: #e54858;
@@ -353,7 +358,6 @@ input[data-error]::after {
   top: 19%;
 }
 
-
 .close {
   position: absolute;
   right: 15px;
@@ -379,16 +383,16 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
-.btn-submit{
+.btn-submit {
   position: absolute;
   bottom: 2rem;
   left: 50%;
   margin-left: -7.1rem;
 }
-.btn-signup{
+.btn-signup {
   margin: 0 auto;
 }
-  
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -474,7 +478,7 @@ input[data-error]::after {
 }
 .hero-section {
   display: flex;
-  border-radius: 10px; 
+  border-radius: 10px;
   color: white;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
 }
@@ -483,9 +487,9 @@ input[data-error]::after {
   flex-direction: column;
   justify-content: space-evenly;
   width: 40%;
-  padding:3rem;
+  padding: 3rem;
   align-items: flex-start;
-  border-radius: 10px 0 0 10px; 
+  border-radius: 10px 0 0 10px;
   background: #232323;
 }
 /* .hero-content::after {
@@ -502,7 +506,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size:5vw;
+  font-size: 5vw;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -527,7 +531,7 @@ input[data-error]::after {
 }
 .hero-img img {
   object-fit: cover;
-  border-radius: 0 10px 10px 0; 
+  border-radius: 0 10px 10px 0;
   width: 100%;
   height: 100%;
   display: block;
@@ -549,7 +553,7 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 950px) {
-  .header-logo{
+  .header-logo {
     width: 30vw;
     min-width: 130px;
   }
@@ -594,7 +598,7 @@ footer {
     text-align: center;
     font-size: 0.7vh;
   }
-  .nav-mask{
+  .nav-mask {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -605,7 +609,7 @@ footer {
     pointer-events: none;
   }
 
-  .main-navbar{
+  .main-navbar {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -613,10 +617,10 @@ footer {
     align-items: flex-end;
     top: 0px;
     right: 0px;
-    z-index: 2;
+    z-index: 1;
     height: 22vh;
   }
-  .main-navbar span{
+  .main-navbar span {
     /* font-size: 1.5vh; */
     margin: auto;
     font-size: 3.5vw;
@@ -625,7 +629,6 @@ footer {
     background-color: #ff0000;
     color: #ffffff;
     border-radius: 15px;
-
   }
   .main-navbar {
     align-self: flex-end;
@@ -641,7 +644,6 @@ footer {
     opacity: 1;
   }
 }
-
 
 .msgError {
   display: none;
