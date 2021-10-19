@@ -190,6 +190,7 @@ nbreVille.addEventListener("input", function (e) {
     nbreVilleOK = true;
   }
 });
+
 //#endregion
 
 //#region CGU verification
@@ -222,6 +223,15 @@ theForm.addEventListener("submit", function (e) {
     citiesOK = true;
   }
 
+  if (nbreVille.value == "") {
+    nbreVille.closest("div").querySelector(".msgError").style.display = "block";
+    nbreVille.style.border = "2px solid lightcoral";
+  } else {
+    nbreVille.closest("div").querySelector(".msgError").style.display = "none";
+    nbreVille.style.border = "none";
+    nbreVilleOK = true;
+  }
+
   if (
     !(
       fistNameOK &&
@@ -239,10 +249,10 @@ theForm.addEventListener("submit", function (e) {
 
     if (!cguOK) {
       cgu.closest("div").querySelector(".msgError").style.display = "block";
+      return;
     }
     return;
   }
-  // console.log("toto");
 
   formValidated();
 });
